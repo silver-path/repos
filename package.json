@@ -1,0 +1,17 @@
+{
+  "name": "@silver-path/terraform-repositories",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/silver-path/terraform-repositories.git"
+  },
+  "author": "Romain KELIFA <romain.kelifa@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^16.25.5",
+    "dotenv": "^8.0.0",
+    "ramda": "^0.26.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7"
+  }
+}
