@@ -26,3 +26,19 @@ variable "GITHUB_COLLABORATOR_TOKEN" {
 variable "TRAVIS_COLLABORATOR_TOKEN" {
   description = "Travis token for the collaborator"
 }
+
+variable "TRAVIS_OWNER_ACCESS_TOKEN" {
+  description = "Travis token for the owner"
+}
+
+variable "NPM_COLLABORATOR_TOKEN" {
+  description = "NPM token for collaborator"
+}
+
+variable "SLACK_CHANNEL_ID" {
+  description = "Slack channel ID"
+}
+
+variable "SLACK_OAUTH_TOKEN" {
+  description = "Slack App OAuth access token"
+}
