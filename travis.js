@@ -28,7 +28,7 @@ const authenticate = async () => {
 }
 const find = async () => {
   if (!access_token) await authenticate()
-  const url = `${domain}/repos`
+  const url = `${domain}/owner/silver-path/repos`
   const options = {
     method: 'GET',
     url,
@@ -37,11 +37,12 @@ const find = async () => {
       Authorization: `token ${access_token}`,
       'Travis-API-Version': 3
     },
-    json: true,
+    json: true
   }
   console.log(JSON.stringify(options, null, 2))
   const response = await request(options)
   const repositories = R.propOr([], 'repositories', response)
+  console.log(repositories.map(({ slug }) => slug))
   const { id = undefined } = repositories.find(({ slug }) => slug === `${GITHUB_OWNER}/${GITHUB_REPOSITORY}`)
   || {}
   return id
@@ -58,12 +59,12 @@ const activate = async () => {
       Authorization: `token ${access_token}`,
       'Travis-API-Version': 3
     },
-    json: true,
+    json: true
   }
   console.log(JSON.stringify(options, null, 2))
   return request(options)
 }
-const configure = async ({ name, value, public = false }) => {
+const configure = async ({ name, value, is_public = false }) => {
   if (!access_token) await authenticate()
   const slug = querystring.escape(`${GITHUB_OWNER}/${GITHUB_REPOSITORY}`)
   const url = `${domain}/repo/${slug}/env_vars`
@@ -79,10 +80,29 @@ const configure = async ({ name, value, public = false }) => {
     form: {
       'env_var.name': name,
       'env_var.value': value,
-      'env_var.public': public
+      'env_var.public': is_public
     }
   }
   console.log(JSON.stringify(options, null, 2))
   return request(options)
 }
-module.exports = { authenticate, find, activate, configure }
+const sync = async () => {
+  if (!access_token) await authenticate()
+  const url = `${domain}/users/sync`
+  const options = {
+    method: 'POST',
+    url,
+    headers: {
+      ...headers,
+      Authorization: `token ${access_token}`
+    }
+  }
+  console.log(JSON.stringify(options, null, 2))
+  return request(options)
+  .catch(e => {
+    console.error(e)
+    if (`${e.statusCode}` === '409') return sync()
+    throw e
+  })
+}
+module.exports = { authenticate, find, activate, configure, sync }

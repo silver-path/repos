@@ -9,7 +9,7 @@ const octokit = new Octokit({ auth })
 const find = async () => {
   const response = await octokit.repos.listForOrg({ org })
   const repositories = R.propOr([], 'data', response)
-  const { id = undefined} = repositories.find(({ full_name }) => full_name === `${org}/${repo}`)
+  const { id = undefined } = repositories.find(({ full_name }) => full_name === `${org}/${repo}`)
   || {}
   return id
 }

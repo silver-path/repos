@@ -4,7 +4,7 @@ variable "PROJECT" {
 }
 
 variable "GITHUB_OWNER" {
-  description = "Github owner / orgnization"
+  description = "Github owner / organization"
 }
 
 variable "GITHUB_REPOSITORY" {
@@ -41,4 +41,12 @@ variable "SLACK_CHANNEL_ID" {
 
 variable "SLACK_OAUTH_TOKEN" {
   description = "Slack App OAuth access token"
+}
+
+variable "CODACY_TOKEN" {
+  description = "Codacy token"
+}
+
+variable "SNYK_TOKEN" {
+  description = "Snyk token"
 }

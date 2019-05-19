@@ -13,5 +13,47 @@
     "ramda": "^0.26.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7"
+  },
+  "devDependencies": {
+    "@commitlint/core": "^7.6.0",
+    "@silver-path/generator-trod": "^1.5.3",
+    "commitlint": "^7.6.1",
+    "commitlint-config-gitmoji": "^1.0.1",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-node": "^9.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6"
+  },
+  "scripts": {
+    "lint": "eslint --fix './**/*.js'",
+    "test": "echo 'You should add unit-test !' && exit 0",
+    "test-with-coverage": "echo 'You should add unit-test and send report for coverage !' && exit 0",
+    "vulnerabilities": "npx snyk test"
+  },
+  "greenkeeper": {
+    "commitMessages": {
+      "initialBadge": ":memo: Docs: Add Greenkeeper badge",
+      "initialDependencies": ":arrow_up: Upgrade: Update dependencies",
+      "initialBranches": ":rocket: Build: Whitelist greenkeeper branches",
+      "dependencyUpdate": ":arrow_up: Upgrade: Update ${dependency} to version ${version}",
+      "devDependencyUpdate": ":arrow_up: Upgrade: Update ${dependency} to version ${version}",
+      "dependencyPin": ":pushpin: Fix: Pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": ":pushpin: Fix: Pin ${dependency} to ${oldVersion}",
+      "addConfigFile": ":wrench: Add Greenkeeper config file",
+      "updateConfigFile": ":wrench: Update Greenkeeper config file",
+      "lockfileUpdate": ":arrow_up: Update lockfile ${lockfilePath}"
+    },
+    "prTitles": {
+      "initialPR": ":tada: Update dependencies to enable Greenkeeper :palm_tree:",
+      "initialPrBadge": ":memo: Add badge to enable Greenkeeper :palm_tree:",
+      "initialPrBadgeOnly": ":memo: Add Greenkeeper badge :palm_tree:",
+      "initialSubgroupPR": ":arrow_up: Update dependencies for ${group} :palm_tree:",
+      "basicPR": ":arrow_up: Update ${dependency} to the latest version :rocket:",
+      "groupPR": ":arrow_up: Update ${dependency} in group ${group} to the latest version :rocket:"
+    }
   }
 }
