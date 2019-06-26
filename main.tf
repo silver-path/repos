@@ -8,6 +8,9 @@ resource "github_repository" "terraform-infrastructure" {
   name             = "terraform-infrastructure"
   description      = "Hosting and network configuration"
   license_template = "mit"
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 # add CI bot as admin collaborator
